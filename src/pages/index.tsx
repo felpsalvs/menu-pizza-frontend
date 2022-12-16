@@ -1,4 +1,5 @@
 import Head from "next/head";
+import logoImg from "../../public/logo.svg";
 
 export default function Home() {
   return (
