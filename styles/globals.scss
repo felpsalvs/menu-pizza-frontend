@@ -1,0 +1,45 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --dark-900: #1b1b1f;
+  --dark-700: #35353a;
+  --gray-100: #f5f8fa;
+  --red-900: #e83f5b;
+  --green-700: #4cd62b;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: var(--dark-700);
+}
+
+body, input, textarea, select, button {
+  font: 400 1rem  sans-serif;
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
