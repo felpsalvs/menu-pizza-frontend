@@ -21,7 +21,12 @@ export default function Home() {
 
             <Input placeholder="Digite sua senha" type="password" />
 
-            <Button />
+            <Button
+             type="submit"
+             loading={true}
+            >
+              Acessar
+              </Button>
           </form>
         </div>
       </div>
