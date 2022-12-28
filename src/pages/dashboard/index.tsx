@@ -1,4 +1,4 @@
-
+import { canSSRAuth } from '../../utils/canSSRAuth';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -12,3 +12,9 @@ export default function Dashboard() {
         </>
     )
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+    return {
+        props: {}
+    }
+})
