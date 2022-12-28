@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-screen-size-helper": "^1.0.3",
+    "react-toastify": "^9.1.1",
     "sass": "^1.56.2"
   },
   "devDependencies": {
