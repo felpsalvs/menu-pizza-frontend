@@ -1,14 +1,22 @@
 import { canSSRAuth } from '../../utils/canSSRAuth';
-import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import Head from 'next/head';
+import { useContext } from 'react';
+import { Header } from '../../components/Header';
 
 
 export default function Dashboard() {
     const { signOut } = useContext(AuthContext);
     return (
         <>
+            <Head>
+                <title>Dashboard | Pizzaria</title>
+            </Head>
+            <div>
+                <Header />
             <h1>Dashboard</h1>
             <button onClick={signOut}>Sair</button>
+            </div>
         </>
     )
 }
