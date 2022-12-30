@@ -62,9 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
           email,
         });
       });
-      
     }
-    
   }, []);
 
   async function signIn({ email, password }: SignInProps) {
