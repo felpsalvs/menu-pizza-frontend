@@ -21,7 +21,7 @@ export function Header() {
             <a>Categoria</a>
           </Link>
           <Link href="/product">
-            <a>Cardapio</a>
+            Cardapio
           </Link>
 
           <button onClick={signOut}>
