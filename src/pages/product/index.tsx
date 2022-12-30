@@ -5,10 +5,23 @@ import { Header } from "../../components/Header";
 import { FiUpload } from "react-icons/fi";
 import Image from "next/image";
 import { useState, ChangeEvent } from "react";
+import { setupAPIClient } from "../../services/api";
 
-export default function Product() {
+type ItemProps = {
+  id: string;
+  name: string;
+};
+
+interface CategoryProps {
+  categoryList: ItemProps[];
+}
+
+export default function Product({ categoryList }: CategoryProps) {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [imageAvatar, setImageAvatar] = useState<File>(null);
+
+  const [categories, setCategories] = useState<ItemProps[]>(categoryList || []);
+  const [categorySelected, setCategorySelected] = useState<ItemProps>(0);
 
   function handleFile(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) {
@@ -25,6 +38,12 @@ export default function Product() {
       setImageAvatar(image);
       setAvatarUrl(URL.createObjectURL(event.target.files[0]));
     }
+  }
+
+  //seleciona uma nova categoria na lista
+  function handleChangeCategory(event: ChangeEvent<HTMLSelectElement>) {
+    const index = event.target.value;
+    setCategorySelected(index);
   }
 
   return (
@@ -56,9 +75,14 @@ export default function Product() {
                 />
               )}
             </label>
-            <select>
-              <option>Selecione uma categoria</option>
-              <option>Selecione uma categoria</option>
+            <select value={categorySelected} onChange={handleChangeCategory}>
+              {categories.map((item, index) => {
+                return (
+                  <option key={item.id} value={index}>
+                    {item.name}
+                  </option>
+                );
+              })}
             </select>
             <input
               type="text"
@@ -84,7 +108,13 @@ export default function Product() {
 }
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+  const apiClient = setupAPIClient(ctx);
+  const response = await apiClient.get("/category");
+
+  // console.log(response.data);
   return {
-    props: {},
+    props: {
+      categoryList: response.data,
+    },
   };
 });
