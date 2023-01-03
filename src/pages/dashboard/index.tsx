@@ -45,6 +45,10 @@ export default function Dashboard({ orders }: HomeProps) {
   const [modalItem, setModalItem] = useState<OrderItemProps[]>();
   const [modalVisible, setModalVisible] = useState(false);
 
+  function handleCloseModal() {
+    setModalVisible(false);
+  }
+
   async function handleOpenModalView(id: string) {
     const apiClient = setupAPIClient();
     const response = await apiClient.get("/orders/detail", {
@@ -86,9 +90,8 @@ export default function Dashboard({ orders }: HomeProps) {
         {modalVisible && (
           <ModalOrder
             isOpen={modalVisible}
-            onRequestClose={() => setModalVisible(false)}
-            className={styles.modal}
-            overlayClassName={styles.overlay}
+            onRequestClose={handleCloseModal}
+            order={modalItem}
           />
         )}
       </div>
