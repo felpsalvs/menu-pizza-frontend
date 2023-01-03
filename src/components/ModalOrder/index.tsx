@@ -47,7 +47,11 @@ export function MordalOrder({
                 <span className={styles.description}>{item.product.description}</span>
             </section>
         ))}
-      </div>
+
+        <button className={styles.buttonOrder} onClick={()=>{}}>
+            Concluir pedido
+        </button>
+     </div>
     </Modal>
   );
 }
