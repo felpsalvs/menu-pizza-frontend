@@ -1,15 +1,16 @@
-import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from "next";
-import { parseCookies } from "nookies";
+import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
+import { parseCookies } from 'nookies'
 
-// função para páginas que só podem ser acessadas por visitantes
+//funcao para paginas que só pode ser acessadas por visitantes
 export function canSSRGuest<P>(fn: GetServerSideProps<P>) {
   return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
+
     const cookies = parseCookies(ctx);
 
-    //se o usuário já estiver logado, redireciona para a página de dashboard
-    if (cookies['nextauth.token']) {
+    // Se o cara tentar acessar a pagina porem tendo já um login salvo redirecionamos
+    if(cookies['@nextauth.token']){
       return {
-        redirect: {
+        redirect:{
           destination: '/dashboard',
           permanent: false,
         }
@@ -18,4 +19,5 @@ export function canSSRGuest<P>(fn: GetServerSideProps<P>) {
 
     return await fn(ctx);
   }
+
 }
