@@ -19,7 +19,7 @@ export function setupAPIClient(ctx = undefined){
   }, (error: AxiosError) => {
     if(error.response.status === 401){
       // qualquer erro 401 (nao autorizado) devemos deslogar o usuario
-      if(typeof window !== undefined){
+      if(error.response.data?.code === 'token.expired'){
         // Chamar a funçao para deslogar o usuario
         signOut();
       }else{
