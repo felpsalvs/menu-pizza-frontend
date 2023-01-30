@@ -16,7 +16,7 @@ export function setupAPIClient(ctx = undefined){
 
   api.interceptors.response.use(response => {
     return response;
-  }, (error: AxiosError) => {
+  }, error => {
     if(error.response.status === 401){
       // qualquer erro 401 (nao autorizado) devemos deslogar o usuario
       if(error.response.data?.code === 'token.expired'){
