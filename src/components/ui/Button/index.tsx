@@ -2,6 +2,7 @@ import { ReactNode, ButtonHTMLAttributes } from 'react';
 import styles from './styles.module.scss';
 
 import { FaSpinner } from 'react-icons/fa'
+import Link from 'next/link';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean,
@@ -18,9 +19,9 @@ export function Button({ loading, children, ...rest }: ButtonProps){
       { loading ? (
         <FaSpinner color="#FFF" size={16} />
       ) : (
-        <a className={styles.buttonText}>
+        <Link className={styles.buttonText} href={''}>
           {children}
-        </a>
+        </Link>
       )}
     </button>
   )

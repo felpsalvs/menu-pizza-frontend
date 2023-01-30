@@ -76,8 +76,8 @@ export default function Home() {
           </Button>
         </form>
 
-        <Link href="/signup">
-           <a className={styles.text}>Nao possui uma conta? Cadastre-se</a>
+        <Link href="/signup" className={styles.text}>
+           Nao possui uma conta? Cadastre-se
         </Link>
 
       </div>
