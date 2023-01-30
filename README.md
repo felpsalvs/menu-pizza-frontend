@@ -28,12 +28,12 @@ Instale com npm ou yarn
 
 ### Para rodar o front e o back: 💻
 ```bash
- yarn install or npm i (to install dependencies)
+ yarn install ou npm i (para instalar as dependências)
  npm run dev
 ```
 
 ### Para rodar o mobile: 💻📲
 ```bash
- yarn install or npm i (to install dependencies)
+ yarn install ou npm i (para instalar as dependências)
  npx expo start
 ```
